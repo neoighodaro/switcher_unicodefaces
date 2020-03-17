@@ -1,6 +1,6 @@
 Package: com.tapsharp.switcher.unicodefaces
 Name: Unicode Faces (Switcher)
-Depends: mobilesubstrate, com.tapsharp.switcher (>= 1.0.2), com.rpetrich.rocketbootstrap (>> 1.0.6)
+Depends: mobilesubstrate, com.tapsharp.switcher (>= 1.0.2)
 Version: 0.0.1
 Architecture: iphoneos-arm
 Description: UnicodeFaces extension for Switcher
