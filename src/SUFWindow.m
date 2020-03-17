@@ -92,8 +92,11 @@ static CGFloat spacingFromSwitcherWindow = 10;
 
 -(UIVisualEffectView *)blurryBackgroundView {
     if (_blurryBackgroundView == nil) {
-        // TODO: Get from switcher settings
-        UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+        UIBlurEffectStyle style = [[NSClassFromString(@"CKSwitcherSettings") shared] displayMode] == CKSwitcherDisplayModeLight
+            ? UIBlurEffectStyleLight
+            : UIBlurEffectStyleDark;
+
+        UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:style];
         _blurryBackgroundView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
         _blurryBackgroundView.frame = self.bounds;
         _blurryBackgroundView.layer.masksToBounds = YES;

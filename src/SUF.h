@@ -15,6 +15,11 @@ typedef NS_ENUM(NSInteger, CKSwitcherDisplayMode) {
     CKSwitcherDisplayModeSystem
 };
 
+@interface CKSwitcherSettings : NSObject
+@property(nonatomic, readonly, getter=displayMode) CKSwitcherDisplayMode displayMode;
++(instancetype)shared;
+@end
+
 @interface CKSwitcherWindow : UIWindow
 @property(nonatomic) NSString *statusNotificationName;
 +(instancetype)sharedInstance;
