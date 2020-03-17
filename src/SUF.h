@@ -17,6 +17,7 @@ typedef NS_ENUM(NSInteger, CKSwitcherDisplayMode) {
 
 @interface CKSwitcherSettings : NSObject
 @property(nonatomic, readonly, getter=displayMode) CKSwitcherDisplayMode displayMode;
+@property(nonatomic, readonly, getter=isSecondColumnActive) BOOL secondColumnActive;
 +(instancetype)shared;
 @end
 

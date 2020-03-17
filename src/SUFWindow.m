@@ -108,10 +108,9 @@ static CGFloat spacingFromSwitcherWindow = 10;
 }
 
 -(CGFloat)calculateXPosition {
-    // TODO: fetch from switcher
     CGFloat framePosition = 0;
-	BOOL secondColumnActive = NO;
-	CGFloat switcherWindowW = (45 * (secondColumnActive ? 2 : 1)) + 25;
+	BOOL secondColumnActive = [[NSClassFromString(@"CKSwitcherSettings") shared] isSecondColumnActive];
+	CGFloat switcherWindowW = (45 * (secondColumnActive ? 2 : 1)) + (25 + (secondColumnActive ? 15 : 0));
 	CKSwitcherWindowPosition switcherWindowPosition = CKSwitcherWindowPositionRight;
 
 	if (switcherWindowPosition == CKSwitcherWindowPositionLeft) {
