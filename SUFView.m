@@ -40,8 +40,7 @@ static CGFloat faceBtnW = 180;
 
 -(UIScrollView *)facesScrollView {
     if (_facesScrollView == nil) {
-        _facesScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 180, 180)];
-        _facesScrollView.userInteractionEnabled = YES;
+        _facesScrollView = [[UIScrollView alloc] initWithFrame:CGRectZero];
     }
     return _facesScrollView;
 }

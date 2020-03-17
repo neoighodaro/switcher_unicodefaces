@@ -54,4 +54,7 @@ typedef void(^animationBlock)(BOOL);
 -(void)setActive:(BOOL)active;
 -(void)switcherStatusWasChanged:(NSNotification *)notification;
 -(void)registerSwitcherListener;
+-(void)registerKeyboardListeners;
+-(void)keyboardDidHide;
+-(void)keyboardDidShow;
 @end

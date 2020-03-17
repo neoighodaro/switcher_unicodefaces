@@ -26,6 +26,7 @@ animationBlock (^getNextAnimation)() = ^{
 
 @implementation SUFWindow : UIWindow
 static CGFloat sufWindowW = 200;
+static BOOL keyboardIsShowing = NO;
 static CGFloat spacingFromSwitcherWindow = 10;
 
 +(instancetype)sharedInstance {
@@ -53,11 +54,11 @@ static CGFloat spacingFromSwitcherWindow = 10;
         self.alpha = 0;
         self.opaque = NO;
         self.hidden = NO;
+        self.layer.masksToBounds = YES;
         self.userInteractionEnabled = YES;
         self.windowLevel = UIWindowLevelAlert - 1;
         self.backgroundColor = [UIColor clearColor];
         self.rootViewController = [SUFViewController new];
-        self.layer.masksToBounds = YES;
         self.layer.cornerRadius = sWindowCornerRadius;
 
         // Add subviews!
@@ -74,6 +75,7 @@ static CGFloat spacingFromSwitcherWindow = 10;
         ]];
 
         [self registerSwitcherListener];
+        [self registerKeyboardListeners];
     }
 
 	return self;
@@ -132,7 +134,11 @@ static CGFloat spacingFromSwitcherWindow = 10;
 -(void)setActive:(BOOL)shouldActivate {
     tslog("SUFWindow:setActive: was called: %@", @(shouldActivate));
 
-    if ((shouldActivate && self.alpha == 1) || (shouldActivate == NO && self.alpha == 0)) {
+    if (
+        (shouldActivate && self.alpha == 1) ||
+        (shouldActivate == NO && self.alpha == 0) ||
+        (shouldActivate && keyboardIsShowing == NO)
+    ) {
         tslog("SUFWindow:setActive: call ignored");
         return;
     }
@@ -164,5 +170,25 @@ static CGFloat spacingFromSwitcherWindow = 10;
                                             selector:@selector(switcherStatusWasChanged:)
                                                 name:@"com.tapsharp.switcher.Status"
                                             object:_switcherWindow];
+}
+
+-(void)registerKeyboardListeners {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                            selector:@selector(keyboardDidShow)
+                                                name:UIKeyboardDidShowNotification
+                                            object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                            selector:@selector(keyboardDidHide)
+                                                name:UIKeyboardDidHideNotification
+                                            object:nil];
+}
+
+-(void)keyboardDidHide {
+    keyboardIsShowing = NO;
+}
+
+-(void)keyboardDidShow {
+    keyboardIsShowing = YES;
 }
 @end
