@@ -1,0 +1,5 @@
+.theos/
+packages/
+.DS_Store
+notes.md
+src/Core/Playground.xm
