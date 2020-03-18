@@ -60,6 +60,11 @@ static CGFloat spacingFromSwitcherWindow = 10;
         self.backgroundColor = [UIColor clearColor];
         self.rootViewController = [SUFViewController new];
         self.layer.cornerRadius = sWindowCornerRadius;
+        if (@available(iOS 13.0, *)) {
+            self.layer.cornerCurve = kCACornerCurveContinuous;
+        } else {
+            self.layer.continuousCorners = YES;
+        }
 
         // Add subviews!
         [self addSubview:[self blurryBackgroundView]];
