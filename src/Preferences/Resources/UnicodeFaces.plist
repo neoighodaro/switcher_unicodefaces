@@ -20,6 +20,10 @@
 				<key>default</key>              <true/>
 				<key>PostNotification</key>     <string>com.tapsharp.switcher.unicodefaces/preferenceschanged</string>
 			</dict>
+
+			<dict>
+				<key>cell</key> 				<string>PSGroupCell</string>
+			</dict>
 			<dict>
 				<key>id</key>                 	<string>on_keyboard</string>
 				<key>cell</key>                 <string>PSSwitchCell</string>
@@ -28,6 +32,11 @@
 				<key>key</key>                  <string>on_keyboard</string>
 				<key>default</key>              <true/>
 				<key>PostNotification</key>     <string>com.tapsharp.switcher.unicodefaces/preferenceschanged</string>
+			</dict>
+			<dict>
+				<key>cell</key>                 <string>PSLinkCell</string>
+				<key>label</key>                <string>Manage</string>
+				<key>detail</key>               <string>SUFManageController</string>
 			</dict>
 		</array>
 	</dict>
