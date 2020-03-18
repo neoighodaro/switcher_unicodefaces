@@ -8,6 +8,10 @@
 %property(nonatomic, retain) SUFWindow *sufWindow;
 -(void)applicationDidFinishLaunching:(id)application {
 	%orig;
-	self.sufWindow = [SUFWindow sharedInstance];
+
+	if ([[SUFSettings sharedInstance] isEnabled]) {
+		tslog("Switcher_UnicodeFaces plugin initialised.");
+		self.sufWindow = [SUFWindow sharedInstance];
+	}
 }
 %end

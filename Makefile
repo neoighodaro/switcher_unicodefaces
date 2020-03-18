@@ -3,7 +3,7 @@ TWEAK_NAME = Switcher_UnicodeFaces
 ARCHS = arm64 arm64e
 INSTALL_TARGET_PROCESSES = SpringBoard
 
-Switcher_UnicodeFaces_CFLAGS = -fobjc-arc -Isrc -ferror-limit=0
+Switcher_UnicodeFaces_CFLAGS = -fobjc-arc -Isrc -include src/Preferences/src/SUFSettings.h -ferror-limit=0
 Switcher_UnicodeFaces_FILES = $(wildcard src/Core/*.m) src/Core/SpringBoard.xm src/Preferences/src/SUFSettings.m
 Switcher_UnicodeFaces_LIBRARIES += tapsharp
 

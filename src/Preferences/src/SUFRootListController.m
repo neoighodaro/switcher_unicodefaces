@@ -16,7 +16,7 @@
 -(instancetype)init {
     if (self = [super init]) {
         HBAppearanceSettings *settings = [[HBAppearanceSettings alloc] init];
-        settings.tintColor = [UIColor colorWithRed:27.0f green:73.0f blue:10.0f alpha:1.0f];
+        settings.tintColor = UIColorFromRGB(27, 73, 101);
         self.hb_appearanceSettings = settings;
     }
 

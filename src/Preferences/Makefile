@@ -1,7 +1,7 @@
 BUNDLE_NAME = UnicodeFaces
 ARCHS = arm64 arm64e
 
-UnicodeFaces_CFLAGS = -fobjc-arc -Isrc -ferror-limit=0
+UnicodeFaces_CFLAGS = -fobjc-arc -Isrc -include ../Shared/Macros.h -ferror-limit=0
 UnicodeFaces_FILES = $(wildcard src/*.m)
 UnicodeFaces_INSTALL_PATH = /Library/PreferenceBundles
 UnicodeFaces_FRAMEWORKS = UIKit
