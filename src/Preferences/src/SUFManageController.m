@@ -3,11 +3,7 @@
 #import <CepheiPrefs/HBListItemsController.h>
 #import "SUFSettings.h"
 
-// extern NSString* PSDeletionActionKey;
-
 @interface PSEditableListController : HBListItemsController
-// -(void)reload;
-// -(void)reloadSpecifiers;
 -(void)editDoneTapped;
 -(BOOL)performDeletionActionForSpecifier:(PSSpecifier*)specifier;
 @end
@@ -15,7 +11,6 @@
 @interface SUFManageController : PSEditableListController  {
 	BOOL _isEditingMode;
 }
-// @property(retain, nonatomic) NSArray *faces;
 @property(retain, nonatomic) NSArray *faceSpecifiers;
 -(PSSpecifier *)createSpecifierFromString:(NSString *)str;
 -(void)addFace:(NSString *)face;
