@@ -9,4 +9,8 @@
     });
 	return sharedInstance;
 }
+
+-(BOOL)onKeyboard {
+    return [self boolForKey:@"on_keyboard" fallback:YES];
+}
 @end
