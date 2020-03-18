@@ -1,4 +1,7 @@
 #define kPackageBundleID "com.tapsharp.switcher.unicodefaces"
+#define kPackageNamePreferenceChanged "com.tapsharp.switcher.unicodefaces/preferenceschanged"
+
+#define UFSettings [SUFSettings sharedInstance]
 
 // ---------------------------------------------------------------------------------------------------------------------
 // Colors

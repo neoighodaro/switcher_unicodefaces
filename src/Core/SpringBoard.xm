@@ -8,10 +8,27 @@
 %property(nonatomic, retain) SUFWindow *sufWindow;
 -(void)applicationDidFinishLaunching:(id)application {
 	%orig;
-
-	if ([[SUFSettings sharedInstance] isEnabled]) {
-		tslog("Switcher_UnicodeFaces plugin initialised.");
-		self.sufWindow = [SUFWindow sharedInstance];
-	}
+	self.sufWindow = [SUFWindow sharedInstance];
 }
 %end
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Initialization
+// ---------------------------------------------------------------------------------------------------------------------
+
+static void prefsUpdated() {
+    [UFSettings refresh];
+    tslog("prefsUpdated: %@", UFSettings.settings);
+}
+
+%ctor {
+	if ([UFSettings isEnabled]) {
+		CFNotificationCenterAddObserver(
+			CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)prefsUpdated,
+			CFSTR(kPackageNamePreferenceChanged), NULL, CFNotificationSuspensionBehaviorCoalesce
+		);
+
+		tslog("Switcher_UnicodeFaces plugin initialised.");
+		%init;
+	}
+}

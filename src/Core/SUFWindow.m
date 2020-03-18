@@ -144,7 +144,7 @@ static CGFloat spacingFromSwitcherWindow = 10;
     if (
         (shouldActivate && self.alpha == 1) ||
         (shouldActivate == NO && self.alpha == 0) ||
-        (shouldActivate && keyboardIsShowing == NO && [[SUFSettings sharedInstance] onKeyboard] == YES)
+        (shouldActivate && keyboardIsShowing == NO && [UFSettings onKeyboard] == YES)
     ) {
         tslog("SUFWindow:setActive: call ignored");
         return;
